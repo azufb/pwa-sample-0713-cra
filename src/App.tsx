@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RegisterTodo } from "./components/organisms/RegisterTodo/RegisterTodo";
 import { TodoList } from "./components/organisms/TodoList/TodoList";
 import { TodoItem } from "./components/organisms/TodoList/TodoListPresenter";
@@ -8,6 +8,16 @@ function App() {
   const todos = localStorage.getItem(LOCAL_STORAGE_NAME);
   const parsedTodos = todos != null ? JSON.parse(todos) : [];
   const [todoList, setTodoList] = useState<TodoItem[]>(parsedTodos);
+
+  useEffect(() => {
+    if (Notification.permission !== "granted") {
+      Notification.requestPermission((permission) => {
+        if (permission === "granted") {
+          new Notification("通知が許可されました！");
+        }
+      });
+    }
+  }, []);
 
   return (
     <div className="px-4">

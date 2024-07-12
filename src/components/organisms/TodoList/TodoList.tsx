@@ -23,6 +23,10 @@ export function TodoList({ todoList, setTodoList }: TodoListProps) {
 
     setTodoList(deletedTodoList);
 
+    if (Notification.permission === "granted") {
+      new Notification("削除されました！");
+    }
+
     setIsOpen(false);
   };
 
