@@ -1,5 +1,6 @@
 {
   "name": "pwa-sample-0713-cra",
+  "homepage": "https://azufb.github.io/pwa-sample-0713-cra/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
